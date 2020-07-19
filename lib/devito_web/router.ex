@@ -13,15 +13,16 @@ defmodule DevitoWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", DevitoWeb do
-    pipe_through :browser
-
-    get "/:short_code", LinkController, :show
-  end
-
   scope "/api/", DevitoWeb do
     pipe_through :api
+    get "/", API.LinkController, :index
+    get "/:id", API.LinkController, :show
+  end
+
+  scope "/", DevitoWeb do
+    pipe_through :browser
     post "/link", LinkController, :create
+    get "/:short_code", LinkController, :show
   end
 
   # Other scopes may use custom stacks.

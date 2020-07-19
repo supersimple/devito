@@ -2,10 +2,6 @@ defmodule DevitoWeb.LinkController do
   use DevitoWeb, :controller
   alias Devito.Link
 
-  def create(conn, params) do
-    IO.inspect(params)
-  end
-
   def show(conn, %{"short_code" => short_code}) do
     case Link.find_link(short_code) do
       nil ->

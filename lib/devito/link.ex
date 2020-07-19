@@ -17,17 +17,23 @@ defmodule Devito.Link do
       valid_short_code?(short_code)
   end
 
-  def generate_short_code() do
-    short_code_chars = Application.get_env(:devito, :short_code_chars)
+  def generate_short_code(retries \\ 5)
+  def generate_short_code(0), do: nil
 
-    Enum.reduce(0..5, [], fn _n, acc -> acc ++ Enum.take_random(short_code_chars, 1) end)
-    |> List.to_string()
+  def generate_short_code(retries) do
+    short_code = do_generate_random_code()
+    if valid_short_code?(short_code), do: short_code, else: generate_short_code(retries - 1)
   end
 
+  @spec insert_link(%__MODULE__{}) :: :error | :ok
   def insert_link(link) do
     db = Devito.CubDB.db()
-    # Verify short code doesnt already exist
-    CubDB.put(db, link.short_code, link)
+
+    if valid?(link) do
+      CubDB.put(db, link.short_code, link)
+    else
+      :error
+    end
   end
 
   def find_link(short_code) do
@@ -48,6 +54,11 @@ defmodule Devito.Link do
     end)
   end
 
+  def all() do
+    db = Devito.CubDB.db()
+    CubDB.select(db)
+  end
+
   defp valid_uri?(string) do
     parsed = URI.parse(string)
 
@@ -64,5 +75,12 @@ defmodule Devito.Link do
         is_nil(CubDB.get(db, string))
 
     resp
+  end
+
+  defp do_generate_random_code do
+    short_code_chars = Application.get_env(:devito, :short_code_chars)
+
+    Enum.reduce(0..5, [], fn _n, acc -> acc ++ Enum.take_random(short_code_chars, 1) end)
+    |> List.to_string()
   end
 end
