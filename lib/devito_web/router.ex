@@ -16,12 +16,12 @@ defmodule DevitoWeb.Router do
   scope "/api/", DevitoWeb do
     pipe_through :api
     get "/", API.LinkController, :index
+    post "/link", API.LinkController, :create
     get "/:id", API.LinkController, :show
   end
 
   scope "/", DevitoWeb do
     pipe_through :browser
-    post "/link", LinkController, :create
     get "/:short_code", LinkController, :show
   end
 

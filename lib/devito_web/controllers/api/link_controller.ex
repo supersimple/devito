@@ -8,8 +8,18 @@ defmodule DevitoWeb.API.LinkController do
   end
 
   def show(conn, %{"id" => id}) do
-    link = Link.find_link(id)
-    render(conn, "show.json", link: link)
+    case Link.find_link(id) do
+      nil ->
+        conn
+        |> put_status(404)
+        |> put_layout(false)
+        |> put_view(DevitoWeb.ErrorView)
+        |> render(:"404", conn.assigns)
+        |> halt()
+
+      link ->
+        render(conn, "show.json", link: link)
+    end
   end
 
   def create(conn, %{"url" => url, "short_code" => short_code}) do
@@ -56,8 +66,7 @@ defmodule DevitoWeb.API.LinkController do
       :ok ->
         conn
         |> put_status(201)
-        |> put_layout(false)
-        |> render(:"201", conn.assigns)
+        |> render("show.json", link: link)
     end
   end
 end

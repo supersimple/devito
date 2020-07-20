@@ -2,19 +2,7 @@
  An Elixir and CubDB based url shortener.
 
 ## Features
-- schema for links 
-  - longurl
-  - shortcode
-  - counter
-
-- API endpoint for adding link
-  - params are URL, shortcode (optional)
-
-- short code generator
-- short code to long url lookup
 - plug for auth
-- html endpoint to list all shortened URLs
-- html endpoint to show info about each shortened URL
 
 - make cubdb for test env that is created/deleted each run
 
