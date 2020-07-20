@@ -11,6 +11,7 @@ defmodule DevitoWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug DevitoWeb.Plugs.APIAuth
   end
 
   scope "/api/", DevitoWeb do

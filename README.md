@@ -3,7 +3,6 @@
 
 ## Features
 - plug for auth
-
 - make cubdb for test env that is created/deleted each run
 
 ## Configuration
