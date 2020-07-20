@@ -3,11 +3,13 @@
 
  An Elixir and CubDB based url shortener.
 
-## Features
-- plug for auth
+## TODO
+
 - make cubdb for test env that is created/deleted each run
 
 ## Configuration
+Authorization is handled via an API token. You must pass `auth_token=<VALUE>` with each request, and that token will be matched against the ENV VAR `AUTH_TOKEN`. The values cannot be set to `nil`.
+
 Configure the application's short_code_chars to a list of values you want the short_code to be generated from.
 
 `config :devito,

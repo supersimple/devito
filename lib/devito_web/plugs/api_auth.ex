@@ -7,11 +7,11 @@ defmodule DevitoWeb.Plugs.APIAuth do
   def init(_opts), do: :ok
 
   def call(conn, _opts \\ []) do
-    case auth_user(conn) do
-      :ok ->
+    case valid_token?(conn) do
+      true ->
         conn
 
-      _error ->
+      _false ->
         conn
         |> resp(401, "unauthorized")
         |> send_resp()
@@ -19,7 +19,8 @@ defmodule DevitoWeb.Plugs.APIAuth do
     end
   end
 
-  def auth_user(conn) do
-    :ok
-  end
+  def valid_token?(%{params: %{"auth_token" => auth_token}}),
+    do: Devito.Auth.valid_token?(auth_token)
+
+  def valid_token?(_conn), do: false
 end
