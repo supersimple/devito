@@ -35,4 +35,6 @@ npm-debug.log
 
 /src/data/
 /test/support/data/
+src/data/
+test/support/data
 .env
