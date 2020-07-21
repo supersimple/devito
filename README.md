@@ -3,6 +3,9 @@
 
  An Elixir and CubDB based url shortener.
 
+## Interface
+Devito is designed to be used with the [Devito CLI](https://github.com/supersimple/devito_cli/). Although you can also interface it using HTTP.
+
 ## Configuration
 Authorization is handled via an API token. You must pass `auth_token=<VALUE>` with each request, and that token will be matched against the ENV VAR `AUTH_TOKEN`. The values cannot be set to `nil`.
 
@@ -10,6 +13,11 @@ Configure the application's short_code_chars to a list of values you want the sh
 
 `config :devito,
   short_code_chars: []`
+
+## Endpoints
+GET /api/ index of all links
+POST /api/link to create a new link. Params: url=<URL>&short_code=<SHORTCODE>&auth_token=<TOKEN>
+GET /api/<SHORTCODE> shows info about a link
 
 ## Running Locally
 
