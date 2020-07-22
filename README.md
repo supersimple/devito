@@ -1,5 +1,5 @@
 # Devito
-![](https://i.imgur.com/dEGXMrD.png)
+![](https://github.com/supersimple/devito/blob/main/devito-sm.png?raw=true)
 
  An Elixir and CubDB based url shortener.
 
