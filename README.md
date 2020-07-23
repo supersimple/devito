@@ -15,9 +15,9 @@ Configure the application's short_code_chars to a list of values you want the sh
   short_code_chars: []`
 
 ## Endpoints
-GET /api/ index of all links
-POST /api/link to create a new link. Params: url=<URL>&short_code=<SHORTCODE>&auth_token=<TOKEN>
-GET /api/<SHORTCODE> shows info about a link
+- GET /api/ index of all links
+- POST /api/link to create a new link. Params: url=URL&short_code=SHORTCODE&auth_token=TOKEN
+- GET /api/SHORTCODE shows info about a link
 
 ## Deploying to Gigalixir
 _If you are unfamiliar with Gigalixir, they are a hosting service designed for Elixir._
