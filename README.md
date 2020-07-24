@@ -35,6 +35,8 @@ _Note: Your auth token will be used to authenitcate all API requests_
 7. Configure the CLI (`./devito config --apiurl <APP URL> --authtoken <TOKEN FROM STEP 4>`)
 8. Test it out. `./devito https://supersimple.org sprsmpl`
 
+## Help Video
+An [Install walk-through video](https://www.youtube.com/embed/7A7jtQfFB00) is available.
 
 ## Running Locally
 
