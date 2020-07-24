@@ -38,6 +38,9 @@ _Note: Your auth token will be used to authenitcate all API requests_
 ## Help Video
 An [Install walk-through video](https://www.youtube.com/embed/7A7jtQfFB00) is available.
 
+## Logo Credit
+Devito Logo by [https://markfarrisdesign.com/](Mark Farris)
+
 ## Running Locally
 
 To start your Phoenix server:
