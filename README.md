@@ -15,9 +15,12 @@ Configure the application's short_code_chars to a list of values you want the sh
   short_code_chars: []`
 
 ## Endpoints
-- GET /api/ index of all links
-- POST /api/link to create a new link. Params: url=URL&short_code=SHORTCODE&auth_token=TOKEN
-- GET /api/SHORTCODE shows info about a link
+| Method | Path | Description | Required Params | Optional Params |
+|--------|------|-------------|-----------------|-----------------|
+| GET | /api/ | Index of all links | auth_token=TOKEN | download=true |
+| POST | /api/link | Create a new link | auth_token=TOKEN; short_code=SHORTCODE; auth_token=TOKEN |
+| GET | /api/SHORTCODE | Shows info about a link | - | - |
+| POST | /api/import | imports JSON links | body=JSON | - |
 
 ## Deploying to Gigalixir
 _If you are unfamiliar with Gigalixir, they are a hosting service designed for Elixir._
@@ -39,7 +42,12 @@ _Note: Your auth token will be used to authenitcate all API requests_
 An [Install walk-through video](https://www.youtube.com/embed/7A7jtQfFB00) is available.
 
 ## Logo Credit
-Devito Logo by [https://markfarrisdesign.com/](Mark Farris)
+Devito Logo by [Mark Farris](https://markfarrisdesign.com)
+
+## Upgrading
+Before upgrading or redploying, make sure to backup your existing data.
+You will need to re-import your links after releasing your code.
+
 
 ## Running Locally
 

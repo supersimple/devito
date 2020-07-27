@@ -6,9 +6,10 @@ defmodule Devito.Auth do
     with auth_token <- System.get_env("AUTH_TOKEN"),
          false <- is_nil(auth_token),
          false <- is_nil(token) do
-      hash_token(auth_token) == token
+      Plug.Crypto.secure_compare(hash_token(auth_token), token)
     else
-      _error -> false
+      _error ->
+        false
     end
   end
 

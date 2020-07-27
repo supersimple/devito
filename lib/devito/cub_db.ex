@@ -5,7 +5,7 @@ defmodule Devito.CubDB do
 
   use GenServer
 
-  @data_location Application.get_env(:devito, :cub_db_file, "src/data/")
+  @data_location Application.get_env(:devito, :cub_db_file, "priv/data")
   @doc false
   def start_link(opts \\ %{}) do
     GenServer.start_link(__MODULE__, opts, name: __MODULE__)

@@ -11,6 +11,10 @@ defmodule DevitoWeb.API.LinkView do
     link_json(link)
   end
 
+  def render("show.json", %{resp: resp}) do
+    resp
+  end
+
   defp link_json({_key, link}) do
     link_json(link)
   end

@@ -18,6 +18,7 @@ defmodule DevitoWeb.Router do
     pipe_through :api
     get "/", API.LinkController, :index
     post "/link", API.LinkController, :create
+    post "/import", API.LinkController, :import
     get "/:id", API.LinkController, :show
   end
 
