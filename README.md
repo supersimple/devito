@@ -32,7 +32,7 @@ _Watch [this tutorial](https://elixircasts.io/deploying-with-gigalixir-%28revise
 _Note: The buildpack config are already included in this repo. Also, there is no need to provision a database._
 3. Create a new app.
 4. Set your AUTH_TOKEN from the Gigalixir console > configuration
-_Note: Your auth token will be used to authenitcate all API requests_
+_Note: Your auth token will be used to authenticate all API requests_
 5. Deploy the app - It is designed to be deployed using [Elixir Releases](https://gigalixir.readthedocs.io/en/latest/modify-app/releases.html#)
 6. Download the [Devito CLI](https://github.com/supersimple/devito_cli/)
 7. Configure the CLI (`./devito config --apiurl <APP URL> --authtoken <TOKEN FROM STEP 4>`)
