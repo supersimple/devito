@@ -20,9 +20,9 @@ Configure the application's short_code_chars to a list of values you want the sh
 | GET | /api/ | Index of all links | auth_token=TOKEN | download=true |
 | POST | /api/link | Create a new link | auth_token=TOKEN; short_code=SHORTCODE; auth_token=TOKEN |
 | GET | /api/SHORTCODE | Shows info about a link | - | - |
-| POST | /api/import | imports JSON links | body=JSON | - |
+| POST | /api/import | imports JSON links | auth_token=TOKEN; body=JSON | - |
 
-## Deploying to Gigalixir
+## Initial Deployment to Gigalixir
 _If you are unfamiliar with Gigalixir, they are a hosting service designed for Elixir._
 _This app will work on the free tier and has no need for a postgres database._
 _Watch [this tutorial](https://elixircasts.io/deploying-with-gigalixir-%28revised%29) for more information._
@@ -37,6 +37,13 @@ _Note: Your auth token will be used to authenticate all API requests_
 6. Download the [Devito CLI](https://github.com/supersimple/devito_cli/)
 7. Configure the CLI (`./devito config --apiurl <APP URL> --authtoken <TOKEN FROM STEP 4>`)
 8. Test it out. `./devito https://supersimple.org sprsmpl`
+
+## Update Deployments
+Gigalixir requires monthly deployments on the free tier. *Before deploying, you will need to migrate your existing data*.
+To migrate data:
+1. export your current data `devito export ~/Desktop`
+2. deploy `git push gigalixir +HEAD:master`
+3. import data `POST api/import`
 
 ## Help Video
 An [Install walk-through video](https://www.youtube.com/embed/7A7jtQfFB00) is available.
