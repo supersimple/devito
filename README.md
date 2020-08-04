@@ -40,7 +40,11 @@ _Note: Your auth token will be used to authenticate all API requests_
 
 ## Update Deployments
 Gigalixir requires monthly deployments on the free tier. *Before deploying, you will need to migrate your existing data*.
-To migrate data:
+
+### Using the CLI
+`devito deploy`
+
+### To migrate data manually:
 1. export your current data `devito export ~/Desktop`
 2. deploy `git push gigalixir +HEAD:master`
 3. import data `POST api/import`
