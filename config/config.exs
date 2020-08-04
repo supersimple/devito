@@ -7,6 +7,12 @@
 # General application configuration
 use Mix.Config
 
+config :devito, Devito.Repo,
+  database: "devito_repo",
+  username: "user",
+  password: "pass",
+  hostname: "localhost"
+
 # Configures the endpoint
 config :devito, DevitoWeb.Endpoint,
   url: [host: "localhost"],
