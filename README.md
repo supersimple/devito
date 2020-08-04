@@ -44,6 +44,8 @@ To migrate data:
 1. export your current data `devito export ~/Desktop`
 2. deploy `git push gigalixir +HEAD:master`
 3. import data `POST api/import`
+  - fish `curl -X POST -H "Content-Type: application/json" -d (cat ~/Desktop/devito_links.json) "<APP URL>/api/import?auth_token=<AUTH TOKEN>"
+  - bash `curl -X POST -H "Content-Type: application/json" -d "$(cat ~/Desktop/devito_links.json)" "<APP URL>/api/import?auth_token=<AUTH TOKEN>"`
 
 ## Help Video
 An [Install walk-through video](https://www.youtube.com/embed/7A7jtQfFB00) is available.
