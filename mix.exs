@@ -4,7 +4,7 @@ defmodule Devito.MixProject do
   def project do
     [
       app: :devito,
-      version: "1.1.2",
+      version: "1.1.3",
       elixir: "~> 1.10",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
