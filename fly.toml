@@ -1,0 +1,41 @@
+# fly.toml file generated for fragrant-bird-3566 on 2021-05-28T19:51:23-06:00
+
+app = "fragrant-bird-3566"
+
+kill_signal = "SIGTERM"
+kill_timeout = 5
+
+[env]
+
+# Un-comment if using ecto
+#[deploy]
+#  release_command = "/app/bin/devito eval Devito.Release.migrate"
+
+[experimental]
+  allowed_public_ports = []
+  auto_rollback = true
+
+[[services]]
+  http_checks = []
+  internal_port = 4000
+  protocol = "tcp"
+  script_checks = []
+
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    grace_period = "1s"
+    interval = "15s"
+    restart_limit = 6
+    timeout = "2s"
