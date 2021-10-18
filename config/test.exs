@@ -6,6 +6,6 @@ config :devito, DevitoWeb.Endpoint,
   http: [port: 4002],
   server: false
 
-config :devito, cub_db_file: "test/support/data/"
+config :devito, table_name: :test_data
 # Print only warnings and errors during test
 config :logger, level: :warn

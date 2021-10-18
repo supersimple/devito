@@ -3,6 +3,8 @@ defmodule Devito.Link do
   Schema for a link.
   """
 
+  alias Devito.Data
+
   @enforce_keys [:url, :short_code]
   defstruct [:url, :short_code, :count, :created_at]
 
@@ -27,36 +29,26 @@ defmodule Devito.Link do
 
   @spec insert_link(%__MODULE__{}) :: :error | :ok
   def insert_link(link) do
-    db = Devito.CubDB.db()
-
     if valid?(link) do
-      CubDB.put(db, link.short_code, link)
+      Data.insert(link)
     else
       :error
     end
   end
 
   def find_link(short_code) do
-    db = Devito.CubDB.db()
-    CubDB.get(db, short_code)
+    Data.find(short_code)
   end
 
   def increment_count(short_code) do
-    db = Devito.CubDB.db()
-
-    CubDB.get_and_update(db, short_code, fn
-      nil ->
-        {:error, :not_found}
-
-      link ->
-        link = %{link | count: link.count + 1}
-        {:ok, link}
-    end)
+    case Data.increment_count(short_code) do
+      :error -> {:error, :not_found}
+      _ -> :ok
+    end
   end
 
   def all() do
-    db = Devito.CubDB.db()
-    CubDB.select(db)
+    Data.all()
   end
 
   defp valid_uri?(string) do
@@ -68,11 +60,9 @@ defmodule Devito.Link do
   end
 
   defp valid_short_code?(string) do
-    db = Devito.CubDB.db()
-
     resp =
       string not in [nil, ""] and
-        is_nil(CubDB.get(db, string))
+        is_nil(Data.find(string))
 
     resp
   end

@@ -3,7 +3,7 @@ defmodule DevitoWeb.API.LinkController do
   alias Devito.Link
 
   def index(conn, params) do
-    {:ok, links} = Link.all()
+    links = Link.all()
 
     if Map.get(params, "download") do
       data = prepare_json(links)

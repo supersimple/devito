@@ -15,7 +15,7 @@ defmodule Devito.Application do
       DevitoWeb.Endpoint,
       # Start a worker by calling: Devito.Worker.start_link(arg)
       # {Devito.Worker, arg}
-      Devito.CubDB
+      Devito.Data
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -17,7 +17,8 @@ config :devito, DevitoWeb.Endpoint,
 
 config :devito,
   short_code_chars:
-    Enum.map(?A..?Z, &<<&1>>) ++ Enum.map(?a..?z, &<<&1>>) ++ Enum.map(?0..?9, &<<&1>>)
+    Enum.map(?A..?Z, &<<&1>>) ++ Enum.map(?a..?z, &<<&1>>) ++ Enum.map(?0..?9, &<<&1>>),
+  table_name: :data
 
 # Configures Elixir's Logger
 config :logger, :console,
