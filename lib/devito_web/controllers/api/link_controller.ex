@@ -91,7 +91,7 @@ defmodule DevitoWeb.API.LinkController do
 
   defp prepare_json(links) do
     links
-    |> Enum.map(fn {_key, link} ->
+    |> Enum.map(fn link ->
       %{
         count: link.count,
         url: link.url,
